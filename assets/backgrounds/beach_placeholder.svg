@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3f8fd8"/>
+      <stop offset="1" stop-color="#bfe3ff"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c5f9e"/>
+      <stop offset="1" stop-color="#2fa3c4"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f1dc9c"/>
+      <stop offset="1" stop-color="#d9b86a"/>
+    </linearGradient>
+  </defs>
+  <!-- Sky -->
+  <rect x="0" y="0" width="1920" height="480" fill="url(#sky)"/>
+  <circle cx="1600" cy="160" r="80" fill="#fff4b0"/>
+  <ellipse cx="400" cy="150" rx="140" ry="40" fill="#ffffff" opacity="0.85"/>
+  <ellipse cx="900" cy="230" rx="180" ry="45" fill="#ffffff" opacity="0.75"/>
+  <!-- Sea -->
+  <rect x="0" y="480" width="1920" height="200" fill="url(#sea)"/>
+  <path d="M0 560 Q 120 545 240 560 T 480 560 T 720 560 T 960 560 T 1200 560 T 1440 560 T 1680 560 T 1920 560" stroke="#8fd6ef" stroke-width="4" fill="none"/>
+  <path d="M0 620 Q 120 605 240 620 T 480 620 T 720 620 T 960 620 T 1200 620 T 1440 620 T 1680 620 T 1920 620" stroke="#8fd6ef" stroke-width="4" fill="none"/>
+  <!-- Surf line -->
+  <path d="M0 680 Q 160 665 320 680 T 640 680 T 960 680 T 1280 680 T 1600 680 T 1920 680 L1920 690 L0 690 Z" fill="#ffffff" opacity="0.9"/>
+  <!-- Sand -->
+  <rect x="0" y="688" width="1920" height="392" fill="url(#sand)"/>
+  <!-- Rock obstacle (non-walkable hole in the nav mesh: x 1100-1300, y 780-900) -->
+  <path d="M1090 905 L1110 800 L1170 770 L1250 775 L1300 815 L1312 905 Z" fill="#7a7a7a" stroke="#4a4a4a" stroke-width="6"/>
+  <path d="M1140 820 L1190 795 L1240 805" stroke="#9a9a9a" stroke-width="6" fill="none"/>
+  <!-- Walkable-area hint (debug) -->
+  <path d="M80 700 L1840 700 L1880 1040 L40 1040 Z" fill="none" stroke="#b08a3a" stroke-width="3" stroke-dasharray="18 12" opacity="0.6"/>
+  <!-- Placeholder marker: diagonal hatch in corner -->
+  <g stroke="#ff00ff" stroke-width="10" opacity="0.5">
+    <line x1="0" y1="80" x2="80" y2="0"/>
+    <line x1="0" y1="160" x2="160" y2="0"/>
+    <line x1="0" y1="240" x2="240" y2="0"/>
+  </g>
+</svg>

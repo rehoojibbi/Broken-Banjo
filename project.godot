@@ -11,21 +11,35 @@ config_version=5
 [application]
 
 config/name="Broken Banjo"
+run/main_scene="res://scenes/UI/TitleScreen.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DialogueManager="*uid://c3rodes2l3gxb"
+GameState="*res://core/autoload/game_state.gd"
+RoomChanger="*res://core/autoload/room_changer.gd"
+Hud="*res://scenes/UI/Hud.tscn"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://scenes/UI/DialogueBalloon.tscn"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/rosa.dialogue")
 
 [physics]
 

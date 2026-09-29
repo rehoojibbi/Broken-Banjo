@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/UI/end_card.gd" id="1_end"]
+
+[node name="EndCard_Ominous" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_end")
+heading = "\"He's on the plane.\""
+body = "At the gate, a man in a grey coat folds his newspaper and makes a short phone call.
+
+Dave doesn't know it yet, but he isn't travelling alone.
+
+(Tip: Rosa at the newsstand knows everyone. Show her what you find in the street.)"
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.06, 0.07, 1)
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -700.0
+offset_top = -380.0
+offset_right = 700.0
+offset_bottom = 380.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Heading" type="Label" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.4, 0.35, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 90
+text = "Heading"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Body" type="Label" parent="VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1400, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.88, 0.88, 0.9, 1)
+theme_override_font_sizes/font_size = 32
+text = "Body"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Thanks" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.8, 0.45, 1)
+theme_override_font_sizes/font_size = 44
+text = "Thanks for playing the demo!"
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(360, 76)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
+text = "Restart"

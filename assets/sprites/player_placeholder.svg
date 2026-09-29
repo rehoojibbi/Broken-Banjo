@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="160" viewBox="0 0 64 160">
+  <!-- Placeholder player: capsule body facing right (nose on the right side). Feet at bottom centre. -->
+  <rect x="8" y="40" width="48" height="112" rx="24" ry="24" fill="#d0452f" stroke="#2b1a14" stroke-width="4"/>
+  <circle cx="32" cy="26" r="22" fill="#f2c79a" stroke="#2b1a14" stroke-width="4"/>
+  <circle cx="42" cy="22" r="4" fill="#2b1a14"/>
+  <rect x="50" y="24" width="10" height="6" rx="3" fill="#e0a878" stroke="#2b1a14" stroke-width="2"/>
+  <ellipse cx="32" cy="156" rx="26" ry="4" fill="#000000" opacity="0.3"/>
+</svg>

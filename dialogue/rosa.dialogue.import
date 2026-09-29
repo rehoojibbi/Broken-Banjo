@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=18
+type="Resource"
+uid="uid://c31k67rg57d2p"
+path="res://.godot/imported/rosa.dialogue-96e2d906cd3a81737186bc77620544d9.tres"
+
+[deps]
+
+source_file="res://dialogue/rosa.dialogue"
+dest_files=["res://.godot/imported/rosa.dialogue-96e2d906cd3a81737186bc77620544d9.tres"]
+
+[params]
+
+defaults=true

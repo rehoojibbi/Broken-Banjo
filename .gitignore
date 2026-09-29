@@ -18,3 +18,12 @@ mono_crash.*.json
 
 # Android build template
 /android/
+
+# OS / editor junk
+Thumbs.db
+desktop.ini
+.DS_Store
+*.bak
+*.orig
+_backups/
+

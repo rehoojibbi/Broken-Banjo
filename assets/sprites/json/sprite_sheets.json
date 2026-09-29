@@ -1,0 +1,68 @@
+{
+  "generatedBy": "Sorceress AutoSprite V3",
+  "spriteCount": 2,
+  "combatFiles": 0,
+  "audioFiles": 0,
+  "timing": {
+    "sourceFps": 30,
+    "sampleEvery": 2,
+    "defaultPlaybackFps": 15,
+    "formula": "playbackFps = sourceFps / sampleEvery (30/N)",
+    "soundSync": "No audio packed in this zip. If you add MP3s later, start them with each animation at defaultPlaybackFps."
+  },
+  "playbackGuide": "Source clips are treated as 30fps. Sheets extract every Nth frame (sampleEvery); default playbackFps ≈ 30/N so wall-clock timing matches the source (e.g. every 4 → 7.5fps). animation.sections is authoritative (role, frames, fps, loop/pingPong/reverse). Frame indices are 0-based on the exported sheet. If combat.file is set, load that .hits.json for damage boxes. Start each audioFile with its sprite animation. At the pack/sprite default playbackFps (sourceFps / sampleEvery), SFX stay aligned with the source clip. Changing fps without retiming audio will desync sound.",
+  "sprites": [
+    {
+      "sprite": "player_pickup_left_spritesheet",
+      "image": "player_pickup_left_spritesheet.png",
+      "frameWidth": 512,
+      "frameHeight": 931,
+      "sheet": {
+        "cols": 4,
+        "rows": 4,
+        "frames": 16,
+        "imageWidth": 2048,
+        "imageHeight": 3724
+      },
+      "timing": {
+        "sourceFps": 30,
+        "sampleEvery": 2,
+        "playbackFps": 15,
+        "formula": "playbackFps ≈ sourceFps / sampleEvery (30/N)",
+        "note": "Play at playbackFps to match original 30fps wall-clock timing with fewer extracted frames."
+      },
+      "defaultAnimation": {
+        "start": 0,
+        "end": 15,
+        "fps": 15,
+        "loop": true
+      }
+    },
+    {
+      "sprite": "player_walk_left_spritesheet",
+      "image": "player_walk_left_spritesheet.png",
+      "frameWidth": 512,
+      "frameHeight": 931,
+      "sheet": {
+        "cols": 6,
+        "rows": 6,
+        "frames": 31,
+        "imageWidth": 3072,
+        "imageHeight": 5586
+      },
+      "timing": {
+        "sourceFps": 30,
+        "sampleEvery": 2,
+        "playbackFps": 15,
+        "formula": "playbackFps ≈ sourceFps / sampleEvery (30/N)",
+        "note": "Play at playbackFps to match original 30fps wall-clock timing with fewer extracted frames."
+      },
+      "defaultAnimation": {
+        "start": 0,
+        "end": 30,
+        "fps": 15,
+        "loop": true
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player_placeholder.svg" id="2_tex"]
+[ext_resource type="Script" path="res://core/systems/speech_label.gd" id="3_speech"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_script")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_tex")
+offset = Vector2(0, -80)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 4.0
+
+[node name="SpeechLabel" type="Label" parent="."]
+script = ExtResource("3_speech")

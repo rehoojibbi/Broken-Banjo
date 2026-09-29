@@ -1,0 +1,542 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scenes/rooms/room_apartment.gd" id="1_room_apartment"]
+[ext_resource type="Script" path="res://core/systems/exit_hotspot.gd" id="2_exit_hotspot"]
+[ext_resource type="Script" path="res://core/systems/hotspot.gd" id="3_hotspot"]
+[ext_resource type="PackedScene" path="res://scenes/player/Player.tscn" id="4_player"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_1"]
+vertices = PackedVector2Array(40, 695, 1880, 695, 1900, 940, 20, 940)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(40, 695, 1880, 695, 1900, 940, 20, 940)])
+agent_radius = 0.0
+
+[node name="Room_Apartment" type="Node2D"]
+script = ExtResource("1_room_apartment")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="Wall" type="Polygon2D" parent="Background"]
+color = Color(0.36, 0.4, 0.38, 1)
+polygon = PackedVector2Array(0, 0, 1920, 0, 1920, 650, 0, 650)
+
+[node name="PictureRail" type="Polygon2D" parent="Background"]
+color = Color(0.29, 0.32, 0.3, 1)
+polygon = PackedVector2Array(0, 120, 1920, 120, 1920, 128, 0, 128)
+
+[node name="Floor" type="Polygon2D" parent="Background"]
+color = Color(0.45, 0.32, 0.22, 1)
+polygon = PackedVector2Array(0, 650, 1920, 650, 1920, 1080, 0, 1080)
+
+[node name="FloorBoard0" type="Polygon2D" parent="Background"]
+color = Color(0.38, 0.27, 0.18, 1)
+polygon = PackedVector2Array(0, 705, 1920, 705, 1920, 709, 0, 709)
+
+[node name="FloorBoard1" type="Polygon2D" parent="Background"]
+color = Color(0.38, 0.27, 0.18, 1)
+polygon = PackedVector2Array(0, 770, 1920, 770, 1920, 774, 0, 774)
+
+[node name="FloorBoard2" type="Polygon2D" parent="Background"]
+color = Color(0.38, 0.27, 0.18, 1)
+polygon = PackedVector2Array(0, 845, 1920, 845, 1920, 849, 0, 849)
+
+[node name="FloorBoard3" type="Polygon2D" parent="Background"]
+color = Color(0.38, 0.27, 0.18, 1)
+polygon = PackedVector2Array(0, 930, 1920, 930, 1920, 934, 0, 934)
+
+[node name="FloorBoard4" type="Polygon2D" parent="Background"]
+color = Color(0.38, 0.27, 0.18, 1)
+polygon = PackedVector2Array(0, 1020, 1920, 1020, 1920, 1024, 0, 1024)
+
+[node name="Baseboard" type="Polygon2D" parent="Background"]
+color = Color(0.25, 0.2, 0.16, 1)
+polygon = PackedVector2Array(0, 630, 1920, 630, 1920, 652, 0, 652)
+
+[node name="Rug" type="Polygon2D" parent="Background"]
+color = Color(0.55, 0.22, 0.2, 1)
+polygon = PackedVector2Array(650, 760, 1250, 760, 1330, 905, 570, 905)
+
+[node name="RugInner" type="Polygon2D" parent="Background"]
+color = Color(0.62, 0.3, 0.24, 1)
+polygon = PackedVector2Array(690, 780, 1215, 780, 1275, 885, 625, 885)
+
+[node name="RoomName" type="Label" parent="Background"]
+offset_left = 24
+offset_top = 18
+theme_override_colors/font_color = Color(1, 1, 1, 0.55)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Dave's apartment"
+
+[node name="Hotspots" type="Node2D" parent="."]
+
+[node name="FrontDoor" type="Area2D" parent="Hotspots"]
+script = ExtResource("2_exit_hotspot")
+position = Vector2(195, 440)
+display_name = "Front door"
+look_text = "My front door. Three locks, one of them real."
+target_room = "res://scenes/rooms/Room_Street.tscn"
+target_spawn = "from_apartment"
+required_items = PackedStringArray("decoded_postcard", "passport")
+locked_text = "I'm not going anywhere yet."
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/FrontDoor"]
+polygon = PackedVector2Array(-125, -210, 125, -210, 125, 210, -125, 210)
+
+[node name="WalkTo" type="Marker2D" parent="Hotspots/FrontDoor"]
+position = Vector2(5, 275)
+
+[node name="Frame" type="Polygon2D" parent="Hotspots/FrontDoor"]
+color = Color(0.25, 0.18, 0.12, 1)
+polygon = PackedVector2Array(-125, -210, 125, -210, 125, 210, -125, 210)
+
+[node name="Door" type="Polygon2D" parent="Hotspots/FrontDoor"]
+color = Color(0.5, 0.33, 0.2, 1)
+polygon = PackedVector2Array(-110, -195, 110, -195, 110, 205, -110, 205)
+
+[node name="PanelTop" type="Polygon2D" parent="Hotspots/FrontDoor"]
+color = Color(0.45, 0.3, 0.18, 1)
+polygon = PackedVector2Array(-85, -165, 85, -165, 85, -15, -85, -15)
+
+[node name="PanelBottom" type="Polygon2D" parent="Hotspots/FrontDoor"]
+color = Color(0.45, 0.3, 0.18, 1)
+polygon = PackedVector2Array(-85, 15, 85, 15, 85, 175, -85, 175)
+
+[node name="Knob" type="Polygon2D" parent="Hotspots/FrontDoor"]
+color = Color(0.85, 0.7, 0.3, 1)
+polygon = PackedVector2Array(95, 10, 94.239, 13.827, 92.071, 17.071, 88.827, 19.239, 85, 20, 81.173, 19.239, 77.929, 17.071, 75.761, 13.827, 75, 10, 75.761, 6.173, 77.929, 2.929, 81.173, 0.761, 85, 0, 88.827, 0.761, 92.071, 2.929, 94.239, 6.173)
+
+[node name="GapUnderDoor" type="Polygon2D" parent="Hotspots/FrontDoor"]
+color = Color(0.08, 0.06, 0.05, 1)
+polygon = PackedVector2Array(-110, 203, 110, 203, 110, 210, -110, 210)
+
+[node name="Tag" type="Label" parent="Hotspots/FrontDoor"]
+offset_left = -35
+offset_top = -250
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "DOOR"
+
+[node name="Postcard" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_hotspot")
+position = Vector2(365, 720)
+display_name = "Postcard"
+look_text = "A postcard, pushed under the door. Nobody sends postcards any more. Nobody except..."
+hover_priority = 10
+pickup_item = "postcard"
+pickup_text = "A postcard from Reykjavik. Viktor's handwriting... I haven't heard from Viktor in fifteen years."
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Postcard"]
+polygon = PackedVector2Array(-47, -32, 47, -32, 47, 32, -47, 32)
+
+[node name="WalkTo" type="Marker2D" parent="Hotspots/Postcard"]
+position = Vector2(15, 45)
+
+[node name="Card" type="Polygon2D" parent="Hotspots/Postcard"]
+color = Color(0.93, 0.88, 0.72, 1)
+polygon = PackedVector2Array(-35, -8, 27, -20, 33, 8, -29, 20)
+
+[node name="Stamp" type="Polygon2D" parent="Hotspots/Postcard"]
+color = Color(0.8, 0.25, 0.25, 1)
+polygon = PackedVector2Array(15, -14, 25, -16, 27, -6, 17, -4)
+
+[node name="Desk" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_hotspot")
+position = Vector2(740, 540)
+display_name = "Desk"
+look_text = "My desk. The bottom drawer holds the old spy kit. The top drawer holds the bills. I never open either."
+pickup_item = "uv_torch"
+hide_on_pickup = false
+pickup_text = "The old spy kit! Lock picks, a fake moustache... and my UV torch. Still works."
+empty_text = "The rest of the kit can stay retired. Especially the moustache."
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Desk"]
+polygon = PackedVector2Array(-180, -130, 180, -130, 180, 110, -180, 110)
+
+[node name="WalkTo" type="Marker2D" parent="Hotspots/Desk"]
+position = Vector2(0, 180)
+
+[node name="Top" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.35, 0.24, 0.15, 1)
+polygon = PackedVector2Array(-180, -70, 180, -70, 180, -42, -180, -42)
+
+[node name="Body" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.42, 0.29, 0.18, 1)
+polygon = PackedVector2Array(-160, -42, 160, -42, 160, 108, -160, 108)
+
+[node name="DrawerTop" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.5, 0.35, 0.22, 1)
+polygon = PackedVector2Array(-130, -28, 30, -28, 30, 22, -130, 22)
+
+[node name="DrawerBottom" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.5, 0.35, 0.22, 1)
+polygon = PackedVector2Array(-130, 35, 30, 35, 30, 90, -130, 90)
+
+[node name="HandleTop" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.8, 0.7, 0.4, 1)
+polygon = PackedVector2Array(-65, -8, -35, -8, -35, 0, -65, 0)
+
+[node name="HandleBottom" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.8, 0.7, 0.4, 1)
+polygon = PackedVector2Array(-65, 58, -35, 58, -35, 66, -65, 66)
+
+[node name="Typewriter" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.18, 0.18, 0.2, 1)
+polygon = PackedVector2Array(-100, -115, 30, -115, 30, -70, -100, -70)
+
+[node name="Paper" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.95, 0.95, 0.9, 1)
+polygon = PackedVector2Array(-65, -145, -5, -145, -5, -110, -65, -110)
+
+[node name="LampShade" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.85, 0.75, 0.35, 1)
+polygon = PackedVector2Array(80, -140, 140, -140, 155, -100, 65, -100)
+
+[node name="LampStem" type="Polygon2D" parent="Hotspots/Desk"]
+color = Color(0.2, 0.2, 0.2, 1)
+polygon = PackedVector2Array(105, -100, 115, -100, 115, -70, 105, -70)
+
+[node name="Tag" type="Label" parent="Hotspots/Desk"]
+offset_left = -90
+offset_top = 115
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "DESK (drawers)"
+
+[node name="Bookshelf" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_hotspot")
+position = Vector2(1090, 410)
+display_name = "Bookshelf"
+look_text = "Tolstoy, le Carre, and a book on bonsai I've been pretending to read since 1994."
+pickup_item = "passport"
+hide_on_pickup = false
+pickup_text = "'War and Peace', hollowed out. Nobody ever borrows War and Peace. My passport, right where I left it."
+empty_text = "Just books now. Real ones, mostly."
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Bookshelf"]
+polygon = PackedVector2Array(-100, -240, 100, -240, 100, 240, -100, 240)
+
+[node name="WalkTo" type="Marker2D" parent="Hotspots/Bookshelf"]
+position = Vector2(0, 305)
+
+[node name="Frame" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.3, 0.2, 0.12, 1)
+polygon = PackedVector2Array(-100, -240, 100, -240, 100, 240, -100, 240)
+
+[node name="Shelf0" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.22, 0.14, 0.08, 1)
+polygon = PackedVector2Array(-90, -125, 90, -125, 90, -115, -90, -115)
+
+[node name="Book0_0" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.6, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-85, -195, -71, -195, -71, -125, -85, -125)
+
+[node name="Book0_1" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.2, 0.4, 0.6, 1)
+polygon = PackedVector2Array(-69, -206, -50, -206, -50, -125, -69, -125)
+
+[node name="Book0_2" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.7, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-48, -217, -24, -217, -24, -125, -48, -125)
+
+[node name="Book0_3" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.3, 0.5, 0.3, 1)
+polygon = PackedVector2Array(-22, -200, -5, -200, -5, -125, -22, -125)
+
+[node name="Book0_4" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.5, 0.3, 0.5, 1)
+polygon = PackedVector2Array(-3, -211, 19, -211, 19, -125, -3, -125)
+
+[node name="Book0_5" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.8, 0.8, 0.75, 1)
+polygon = PackedVector2Array(21, -222, 36, -222, 36, -125, 21, -125)
+
+[node name="Book0_6" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.6, 0.2, 0.2, 1)
+polygon = PackedVector2Array(38, -205, 58, -205, 58, -125, 38, -125)
+
+[node name="Book0_7" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.2, 0.4, 0.6, 1)
+polygon = PackedVector2Array(60, -216, 85, -216, 85, -125, 60, -125)
+
+[node name="Shelf1" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.22, 0.14, 0.08, 1)
+polygon = PackedVector2Array(-90, -10, 90, -10, 90, 0, -90, 0)
+
+[node name="Book1_0" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.2, 0.4, 0.6, 1)
+polygon = PackedVector2Array(-85, -83, -64, -83, -64, -10, -85, -10)
+
+[node name="Book1_1" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.7, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-62, -94, -48, -94, -48, -10, -62, -10)
+
+[node name="Book1_2" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.3, 0.5, 0.3, 1)
+polygon = PackedVector2Array(-46, -105, -27, -105, -27, -10, -46, -10)
+
+[node name="Book1_3" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.5, 0.3, 0.5, 1)
+polygon = PackedVector2Array(-25, -88, -1, -88, -1, -10, -25, -10)
+
+[node name="Book1_4" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.8, 0.8, 0.75, 1)
+polygon = PackedVector2Array(1, -99, 18, -99, 18, -10, 1, -10)
+
+[node name="Book1_5" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.6, 0.2, 0.2, 1)
+polygon = PackedVector2Array(20, -82, 42, -82, 42, -10, 20, -10)
+
+[node name="Book1_6" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.2, 0.4, 0.6, 1)
+polygon = PackedVector2Array(44, -93, 59, -93, 59, -10, 44, -10)
+
+[node name="Book1_7" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.7, 0.6, 0.3, 1)
+polygon = PackedVector2Array(61, -104, 81, -104, 81, -10, 61, -10)
+
+[node name="Shelf2" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.22, 0.14, 0.08, 1)
+polygon = PackedVector2Array(-90, 105, 90, 105, 90, 115, -90, 115)
+
+[node name="Book2_0" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.7, 0.6, 0.3, 1)
+polygon = PackedVector2Array(-85, 29, -69, 29, -69, 105, -85, 105)
+
+[node name="Book2_1" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.3, 0.5, 0.3, 1)
+polygon = PackedVector2Array(-67, 18, -46, 18, -46, 105, -67, 105)
+
+[node name="Book2_2" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.5, 0.3, 0.5, 1)
+polygon = PackedVector2Array(-44, 35, -30, 35, -30, 105, -44, 105)
+
+[node name="Book2_3" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.8, 0.8, 0.75, 1)
+polygon = PackedVector2Array(-28, 24, -9, 24, -9, 105, -28, 105)
+
+[node name="Book2_4" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.6, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-7, 13, 17, 13, 17, 105, -7, 105)
+
+[node name="Book2_5" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.2, 0.4, 0.6, 1)
+polygon = PackedVector2Array(19, 30, 36, 30, 36, 105, 19, 105)
+
+[node name="Book2_6" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.7, 0.6, 0.3, 1)
+polygon = PackedVector2Array(38, 19, 60, 19, 60, 105, 38, 105)
+
+[node name="Book2_7" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.3, 0.5, 0.3, 1)
+polygon = PackedVector2Array(62, 8, 77, 8, 77, 105, 62, 105)
+
+[node name="Book2_8" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.5, 0.3, 0.5, 1)
+polygon = PackedVector2Array(79, 25, 99, 25, 99, 105, 79, 105)
+
+[node name="Shelf3" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.22, 0.14, 0.08, 1)
+polygon = PackedVector2Array(-90, 220, 90, 220, 90, 230, -90, 230)
+
+[node name="Book3_0" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.3, 0.5, 0.3, 1)
+polygon = PackedVector2Array(-85, 141, -62, 141, -62, 220, -85, 220)
+
+[node name="Book3_1" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.5, 0.3, 0.5, 1)
+polygon = PackedVector2Array(-60, 130, -44, 130, -44, 220, -60, 220)
+
+[node name="Book3_2" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.8, 0.8, 0.75, 1)
+polygon = PackedVector2Array(-42, 147, -21, 147, -21, 220, -42, 220)
+
+[node name="Book3_3" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.6, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-19, 136, -5, 136, -5, 220, -19, 220)
+
+[node name="Book3_4" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.2, 0.4, 0.6, 1)
+polygon = PackedVector2Array(-3, 125, 16, 125, 16, 220, -3, 220)
+
+[node name="Book3_5" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.7, 0.6, 0.3, 1)
+polygon = PackedVector2Array(18, 142, 42, 142, 42, 220, 18, 220)
+
+[node name="Book3_6" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.3, 0.5, 0.3, 1)
+polygon = PackedVector2Array(44, 131, 61, 131, 61, 220, 44, 220)
+
+[node name="Book3_7" type="Polygon2D" parent="Hotspots/Bookshelf"]
+color = Color(0.5, 0.3, 0.5, 1)
+polygon = PackedVector2Array(63, 148, 85, 148, 85, 220, 63, 220)
+
+[node name="Tag" type="Label" parent="Hotspots/Bookshelf"]
+offset_left = -60
+offset_top = -275
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "BOOKSHELF"
+
+[node name="FramedPhoto" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_hotspot")
+position = Vector2(1720, 292)
+display_name = "Framed photo"
+look_text = "Me and Viktor, Vienna, a lifetime ago. He's holding that battered banjo he never learned to play."
+use_text = "I don't need to take it. I remember that day well enough."
+hover_priority = 5
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/FramedPhoto"]
+polygon = PackedVector2Array(-80, -62, 80, -62, 80, 63, -80, 63)
+
+[node name="WalkTo" type="Marker2D" parent="Hotspots/FramedPhoto"]
+position = Vector2(-180, 433)
+
+[node name="Frame" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.7, 0.55, 0.2, 1)
+polygon = PackedVector2Array(-80, -62, 80, -62, 80, 63, -80, 63)
+
+[node name="Photo" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.8, 0.75, 0.6, 1)
+polygon = PackedVector2Array(-68, -50, 68, -50, 68, 51, -68, 51)
+
+[node name="YoungDave" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.35, 0.3, 0.25, 1)
+polygon = PackedVector2Array(-40, -12, -20, -12, -20, 43, -40, 43)
+
+[node name="YoungDaveHead" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.6, 0.5, 0.4, 1)
+polygon = PackedVector2Array(-20, -22, -20.761, -18.173, -22.929, -14.929, -26.173, -12.761, -30, -12, -33.827, -12.761, -37.071, -14.929, -39.239, -18.173, -40, -22, -39.239, -25.827, -37.071, -29.071, -33.827, -31.239, -30, -32, -26.173, -31.239, -22.929, -29.071, -20.761, -25.827)
+
+[node name="Viktor" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.3, 0.3, 0.35, 1)
+polygon = PackedVector2Array(15, -14, 37, -14, 37, 43, 15, 43)
+
+[node name="ViktorHead" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.6, 0.5, 0.4, 1)
+polygon = PackedVector2Array(36, -24, 35.239, -20.173, 33.071, -16.929, 29.827, -14.761, 26, -14, 22.173, -14.761, 18.929, -16.929, 16.761, -20.173, 16, -24, 16.761, -27.827, 18.929, -31.071, 22.173, -33.239, 26, -34, 29.827, -33.239, 33.071, -31.071, 35.239, -27.827)
+
+[node name="Banjo" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.9, 0.85, 0.7, 1)
+polygon = PackedVector2Array(53, 20, 52.163, 24.21, 49.778, 27.778, 46.21, 30.163, 42, 31, 37.79, 30.163, 34.222, 27.778, 31.837, 24.21, 31, 20, 31.837, 15.79, 34.222, 12.222, 37.79, 9.837, 42, 9, 46.21, 9.837, 49.778, 12.222, 52.163, 15.79)
+
+[node name="BanjoNeck" type="Polygon2D" parent="Hotspots/FramedPhoto"]
+color = Color(0.4, 0.25, 0.15, 1)
+polygon = PackedVector2Array(48, -12, 52, -12, 52, 18, 48, 18)
+
+[node name="Tag" type="Label" parent="Hotspots/FramedPhoto"]
+offset_left = -35
+offset_top = -97
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "PHOTO"
+
+[node name="Window" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_hotspot")
+position = Vector2(1390, 290)
+display_name = "Window"
+look_text = "Rain, rooftops, and Rosa's newsstand down on the corner. She's been open since six. She always is."
+use_text = "It's painted shut. Has been since 2009."
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Window"]
+polygon = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
+
+[node name="WalkTo" type="Marker2D" parent="Hotspots/Window"]
+position = Vector2(0, 415)
+
+[node name="Frame" type="Polygon2D" parent="Hotspots/Window"]
+color = Color(0.85, 0.85, 0.8, 1)
+polygon = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
+
+[node name="Glass" type="Polygon2D" parent="Hotspots/Window"]
+color = Color(0.45, 0.55, 0.7, 1)
+polygon = PackedVector2Array(-135, -135, 135, -135, 135, 135, -135, 135)
+
+[node name="Rooftops" type="Polygon2D" parent="Hotspots/Window"]
+color = Color(0.25, 0.28, 0.35, 1)
+polygon = PackedVector2Array(-135, 135, -135, 40, -70, 40, -70, 10, 10, 10, 10, 60, 80, 60, 80, -10, 135, -10, 135, 135)
+
+[node name="BarV" type="Polygon2D" parent="Hotspots/Window"]
+color = Color(0.85, 0.85, 0.8, 1)
+polygon = PackedVector2Array(-5, -135, 5, -135, 5, 135, -5, 135)
+
+[node name="BarH" type="Polygon2D" parent="Hotspots/Window"]
+color = Color(0.85, 0.85, 0.8, 1)
+polygon = PackedVector2Array(-135, -5, 135, -5, 135, 5, -135, 5)
+
+[node name="Sill" type="Polygon2D" parent="Hotspots/Window"]
+color = Color(0.75, 0.75, 0.7, 1)
+polygon = PackedVector2Array(-165, 150, 165, 150, 165, 164, -165, 164)
+
+[node name="Tag" type="Label" parent="Hotspots/Window"]
+offset_left = -50
+offset_top = -190
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "WINDOW"
+
+[node name="Armchair" type="Area2D" parent="Hotspots"]
+script = ExtResource("3_hotspot")
+position = Vector2(1730, 560)
+display_name = "Armchair"
+look_text = "My thinking chair. Lately it's mostly been a napping chair."
+use_text = "Not now. If Viktor is scared, I should be moving."
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hotspots/Armchair"]
+polygon = PackedVector2Array(-150, -90, 150, -90, 150, 90, -150, 90)
+
+[node name="WalkTo" type="Marker2D" parent="Hotspots/Armchair"]
+position = Vector2(-185, 180)
+
+[node name="Back" type="Polygon2D" parent="Hotspots/Armchair"]
+color = Color(0.3, 0.4, 0.55, 1)
+polygon = PackedVector2Array(-125, -90, 125, -90, 125, 60, -125, 60)
+
+[node name="Seat" type="Polygon2D" parent="Hotspots/Armchair"]
+color = Color(0.26, 0.35, 0.5, 1)
+polygon = PackedVector2Array(-135, 10, 135, 10, 135, 90, -135, 90)
+
+[node name="ArmLeft" type="Polygon2D" parent="Hotspots/Armchair"]
+color = Color(0.24, 0.32, 0.46, 1)
+polygon = PackedVector2Array(-150, -30, -110, -30, -110, 90, -150, 90)
+
+[node name="ArmRight" type="Polygon2D" parent="Hotspots/Armchair"]
+color = Color(0.24, 0.32, 0.46, 1)
+polygon = PackedVector2Array(110, -30, 150, -30, 150, 90, 110, 90)
+
+[node name="Tag" type="Label" parent="Hotspots/Armchair"]
+offset_left = -55
+offset_top = 95
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.8)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 22
+text = "ARMCHAIR"
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_1")
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("4_player")]
+far_y = 695
+near_y = 940
+min_scale = 1.6
+max_scale = 2
+
+[node name="start" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(900, 820)
+
+[node name="from_street" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(200, 740)

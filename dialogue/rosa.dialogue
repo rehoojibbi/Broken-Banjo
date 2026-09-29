@@ -1,0 +1,38 @@
+# Rosa, the chatty newsstand owner outside Dave's building.
+# GameState is passed in by Room.start_dialogue(), so we can check items/flags.
+
+~ start
+if GameState.has_flag("tipped_off")
+	Rosa: Still here? Go on, catch your plane. And keep an eye on that grey coat.
+	=> END
+if GameState.has_flag("met_rosa")
+	Rosa: Back again, Dave? You know I charge for conversation after the third visit.
+else
+	Rosa: Dave! Just the man. Did you hear? The Kowalskis' parrot learned the doorbell. Nobody on the third floor has slept in a week.
+	do GameState.set_flag("met_rosa")
+=> menu
+
+~ menu
+- Any gossip, Rosa?
+	Rosa: The baker's nephew is "in import-export" again. That means the police will be round by Thursday.
+	Rosa: And somebody pushed a postcard under your door this morning. Foreign stamp. I didn't read it. Much.
+	=> menu
+- Seen anyone odd around here?
+	Rosa: Only the gentleman behind me. He's been on the same page for ten minutes. Slow reader, or very dull newspaper.
+	Dave: Or he isn't reading at all.
+	=> menu
+- Found this in the gutter. Mean anything to you? [if GameState.has_item("boarding_pass") /]
+	=> show_pass
+- See you, Rosa.
+	Rosa: Don't be a stranger! Well. Any stranger than usual.
+	=> END
+
+~ show_pass
+Dave: Found this boarding pass in the gutter. Mean anything to you?
+Rosa: Aurora Air! My sister flew with them once. Never again - they charge you for the armrest.
+Rosa: And that name, H. Grau... that's him! The grey coat by my stand. Bought a paper with a hundred-euro note. Who does that?
+Rosa: A standby pass. Flies wherever, whenever - from the same airport you'd use, Dave. And he's been watching your door all morning.
+Dave: Rosa, you'd have made a terrific spy.
+Rosa: Who says I didn't?
+do GameState.set_flag("tipped_off")
+=> END
